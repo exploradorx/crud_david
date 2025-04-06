@@ -14,6 +14,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -124,6 +125,31 @@ public class Crud_alumnos {
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error de seleccion, error: " + e.toString());
+        }
+    }
+    public void ModificarAlumnos (JTextField paramCodigo, JTextField paramNombres, JTextField paramApellidos){
+        
+        setCodigo(Integer.parseInt(paramCodigo.getText()));
+        setNombreAlumnos(paramNombres.getText());
+        setApellidoAlumnos(paramApellidos.getText());
+        
+        Crud_conexion objetoConexion = new Crud_conexion();
+        
+        String consulta = "UPDATE Alumnos SET alumnos.nombres = ?, alumnos.apellidos = ? WHERE alumnos.id = ?;";
+        
+        try {
+            CallableStatement cs = objetoConexion.estableceConexion().prepareCall(consulta);
+            
+            cs.setString(1, getNombreAlumnos());
+            cs.setString(2, getApellidoAlumnos());
+            cs.setInt(3, getCodigo());
+            
+            cs.execute();
+            
+            JOptionPane.showMessageDialog(null, "Modificacion exitosa");
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "No se modifico, error: " + e.toString());
         }
     }
 }

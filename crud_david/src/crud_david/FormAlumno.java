@@ -197,6 +197,9 @@ public class FormAlumno extends javax.swing.JFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
+        Crud_alumnos objetoAlumno = new Crud_alumnos();
+        objetoAlumno.ModificarAlumnos(txtId, txtNombre, txtApellidos);
+        objetoAlumno.MostrarAlumnos(tbTotalAlumnos);
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
