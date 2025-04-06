@@ -152,4 +152,25 @@ public class Crud_alumnos {
             JOptionPane.showMessageDialog(null, "No se modifico, error: " + e.toString());
         }
     }
+    public void EliminarAlumnos(JTextField paramCodigo){
+        
+        setCodigo(Integer.parseInt(paramCodigo.getText()));
+        
+        Crud_conexion objetoConexion = new Crud_conexion();
+        
+        String consulta = "DELETE FROM Alumnos WHERE alumnos.id = ?;";
+        
+        try {
+            
+            CallableStatement cs = objetoConexion.estableceConexion().prepareCall(consulta);
+            
+            cs.setInt(1, getCodigo());
+            cs.execute();
+            
+            JOptionPane.showMessageDialog(null, "Se elimino correctamente el alumno");
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudo eliminar correctamente el alumno, error: " + e.toString());
+        }
+    }
 }

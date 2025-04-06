@@ -85,6 +85,11 @@ public class FormAlumno extends javax.swing.JFrame {
         });
 
         btnEliminar.setText("ELIMINAR");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -222,6 +227,13 @@ public class FormAlumno extends javax.swing.JFrame {
         Crud_alumnos objetoAlumno = new Crud_alumnos();
         objetoAlumno.SeleccionarAlumno(tbTotalAlumnos, txtId, txtNombre, txtApellidos);
     }//GEN-LAST:event_tbTotalAlumnosMouseClicked
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        Crud_alumnos objetoAlumno = new Crud_alumnos();
+        objetoAlumno.EliminarAlumnos(txtId);
+        objetoAlumno.MostrarAlumnos(tbTotalAlumnos);
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
