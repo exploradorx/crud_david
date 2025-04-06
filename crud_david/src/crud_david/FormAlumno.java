@@ -16,6 +16,9 @@ public class FormAlumno extends javax.swing.JFrame {
     public FormAlumno() {
         initComponents();
         
+        this.setLocationRelativeTo(null);
+        txtId.setEnabled(false);
+        
         /*Crud_conexion objetoConexion = new Crud_conexion();
         objetoConexion.estableceConexion();*/
         
@@ -144,6 +147,11 @@ public class FormAlumno extends javax.swing.JFrame {
 
             }
         ));
+        tbTotalAlumnos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbTotalAlumnosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbTotalAlumnos);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -203,7 +211,14 @@ public class FormAlumno extends javax.swing.JFrame {
         // TODO add your handling code here:
         Crud_alumnos objetoAlumno = new Crud_alumnos();
         objetoAlumno.InsertarAlumno(txtNombre, txtApellidos);
+        objetoAlumno.MostrarAlumnos(tbTotalAlumnos);
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void tbTotalAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTotalAlumnosMouseClicked
+        // TODO add your handling code here:
+        Crud_alumnos objetoAlumno = new Crud_alumnos();
+        objetoAlumno.SeleccionarAlumno(tbTotalAlumnos, txtId, txtNombre, txtApellidos);
+    }//GEN-LAST:event_tbTotalAlumnosMouseClicked
 
     /**
      * @param args the command line arguments

@@ -110,4 +110,20 @@ public class Crud_alumnos {
             JOptionPane.showMessageDialog(null, "No se puedo mostrar los registros, error: " + e.toString());
         }
     }
+    public void SeleccionarAlumno(JTable paramTablaAlumnos, JTextField paramId, JTextField paramNombre, JTextField paramApellidos){
+        try {
+            int fila = paramTablaAlumnos.getSelectedRow();
+            
+            if (fila >= 0) {
+                paramId.setText((String) paramTablaAlumnos.getValueAt(fila,0));
+                paramNombre.setText((String) paramTablaAlumnos.getValueAt(fila,1));
+                paramApellidos.setText((String) (paramTablaAlumnos.getValueAt(fila, 2)));
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Fila no seleccionada");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error de seleccion, error: " + e.toString());
+        }
+    }
 }
