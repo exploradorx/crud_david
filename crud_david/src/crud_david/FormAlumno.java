@@ -16,10 +16,12 @@ public class FormAlumno extends javax.swing.JFrame {
     public FormAlumno() {
         initComponents();
         
-        Crud_conexion objetoConexion = new Crud_conexion();
-        objetoConexion.estableceConexion();
+        /*Crud_conexion objetoConexion = new Crud_conexion();
+        objetoConexion.estableceConexion();*/
+        
+        Crud_alumnos objetoAlumnos = new Crud_alumnos();
+        objetoAlumnos.MostrarAlumnos(tbTotalAlumnos);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,6 +68,11 @@ public class FormAlumno extends javax.swing.JFrame {
         });
 
         btnGuardar.setText("GUARDAR");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnModificar.setText("MODIFICAR");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -191,6 +198,12 @@ public class FormAlumno extends javax.swing.JFrame {
     private void txtApellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidosActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        Crud_alumnos objetoAlumno = new Crud_alumnos();
+        objetoAlumno.InsertarAlumno(txtNombre, txtApellidos);
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
      * @param args the command line arguments
